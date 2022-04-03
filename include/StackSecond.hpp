@@ -1,4 +1,4 @@
-// Copyright 2021 by FORTYSS
+//Copyright by Enigma
 
 #ifndef INCLUDE_STACKSECOND_HPP_
 #define INCLUDE_STACKSECOND_HPP_

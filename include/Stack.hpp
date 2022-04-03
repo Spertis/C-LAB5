@@ -1,5 +1,4 @@
-//Copyright by C-developers1488
-
+//Copyright by Enigma
 
 #ifndef INCLUDE_STACK_HPP_
 #define INCLUDE_STACK_HPP_
