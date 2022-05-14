@@ -1,4 +1,4 @@
-//Copyright by Enigma
+//Copyright by Spertis
 
 #ifndef INCLUDE_STACKSECOND_HPP_
 #define INCLUDE_STACKSECOND_HPP_
