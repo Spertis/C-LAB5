@@ -16,7 +16,7 @@ TEST(First, True) {
   EXPECT_EQ(MySteck.pop(), 2);
   EXPECT_EQ(MySteck.head(), 1);
   EXPECT_EQ(MySteck.pop(), 1);
-  std::string err = "Stack is empty";
+  std::string err = "Null error";
   try {
     MySteck.pop();
   }
