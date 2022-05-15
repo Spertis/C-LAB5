@@ -36,7 +36,6 @@ class Stack
   }
  private:
   struct StackObj{
-
     typedef  std::unique_ptr < StackObj> StackObjPtr;
     StackObjPtr last;
     T value;
