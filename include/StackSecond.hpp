@@ -22,7 +22,8 @@ class StackTwo
   template <typename ... Args>
   void push_emplace(Args&&... value) {
     po1nter = std::move(std::make_unique<StackObj>(
-        StackObj(std::move(po1nter), std::move(T(std::forward<Args>(value)...)))));
+        StackObj(std::move(po1nter),
+                 std::move(T(std::forward<Args>(value)...)))));
   }
   void push(T&& value) {
     po1nter = std::move(std::make_unique<StackObj>(
@@ -43,7 +44,8 @@ class StackTwo
   struct StackObj{
     std::unique_ptr<StackObj> last;
     T value;
-    explicit StackObj(std::unique_ptr<StackObj> po1nter = nullptr, T&& valu = T()) {
+    explicit StackObj(std::unique_ptr<StackObj> po1nter = nullptr,
+                      T&& valu = T()) {
       value = std::forward<T>(valu);
       last = std::move(po1nter);
     }
