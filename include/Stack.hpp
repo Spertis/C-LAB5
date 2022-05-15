@@ -12,40 +12,39 @@ class Stack
  public:
   Stack(const Stack&) = delete;
   Stack& operator = (const Stack&) = delete;
-  Stack(): ref(nullptr) {
-  }
+  Stack(): pointer(nullptr) {}
   void push(T&& value) {
-    auto mov = std::unique_ptr<StackObj>(new StackObj(std::move(ref),
+    auto mov = std::unique_ptr<StackObj>(new StackObj(std::move(pointer),
                                                       std::move(value)));
-    ref = std::move(mov);
-    //len++;
+    pointer = std::move(mov);
   }
   void push(const T& value) {
-    auto mov = std::unique_ptr<StackObj>(new StackObj(std::move(ref), (value)));
-    ref = std::move(mov);
+    auto mov = std::unique_ptr<StackObj>(new StackObj(std::move(pointer), (value)));
+    pointer = std::move(mov);
   }
   T pop() {
-    if (ref!= nullptr) {
-      auto del = ref->val;
-      ref = std::move(ref->last);
+    if (pointer!= nullptr) {
+      auto del = pointer->value;
+      pointer = std::move(pointer->last);
       return del;
     }
     throw std::runtime_error("Stack is empty");
   }
   const T& head() const {
-    return ref->val;
+    return pointer->value;
   }
  private:
   struct StackObj{
+
     typedef  std::unique_ptr < StackObj> StackObjPtr;
     StackObjPtr last;
-    T val;
-    explicit StackObj(StackObjPtr ref = nullptr, T valu = T()) {
-      val = valu;
-      last = std::move(ref);
+    T value;
+    explicit StackObj(StackObjPtr pointer = nullptr, T valu = T()) {
+      value = valu;
+      last = std::move(pointer);
     }
   };
-  std::unique_ptr<StackObj> ref;
+  std::unique_ptr<StackObj> pointer;
 };
 
 #endif // INCLUDE_STACK_HPP_
