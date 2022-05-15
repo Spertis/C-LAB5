@@ -13,29 +13,29 @@ class StackTwo
  public:
   StackTwo(const StackTwo&) = delete;
   StackTwo& operator = (const StackTwo&) = delete;
-  StackTwo(): po1nter(nullptr) {}
+  StackTwo(): ref3rence(nullptr) {}
   ~StackTwo(){
-    while (po1nter) {
+    while (ref3rence) {
       pop();
     }
   }
   template <typename ... Args>
   void push_emplace(Args&&... value) {
-    po1nter = std::move(std::make_unique<StackObj>(
-        StackObj(std::move(po1nter),
+    ref3rence = std::move(std::make_unique<StackObj>(
+        StackObj(std::move(ref3rence),
                  std::move(T(std::forward<Args>(value)...)))));
   }
   void push(T&& value) {
-    po1nter = std::move(std::make_unique<StackObj>(
-        StackObj(std::move(po1nter), std::forward<T>(value))));
+    ref3rence = std::move(std::make_unique<StackObj>(
+        StackObj(std::move(ref3rence), std::forward<T>(value))));
   }
   const T& head() const {
-    return po1nter->value;
+    return ref3rence->value;
   }
   T pop() {
-    if (po1nter != nullptr) {
-      T del = std::move(po1nter->value);
-      po1nter = std::move(po1nter->last);
+    if (ref3rence != nullptr) {
+      T del = std::move(ref3rence->value);
+      ref3rence = std::move(ref3rence->last);
       return del;
     }
     throw std::runtime_error("Stack is empty");
@@ -44,13 +44,13 @@ class StackTwo
   struct StackObj{
     std::unique_ptr<StackObj> last;
     T value;
-    explicit StackObj(std::unique_ptr<StackObj> po1nter = nullptr,
+    explicit StackObj(std::unique_ptr<StackObj> ref3rence = nullptr,
                       T&& valu = T()) {
       value = std::forward<T>(valu);
-      last = std::move(po1nter);
+      last = std::move(ref3rence);
     }
   };
-  std::unique_ptr<StackObj> po1nter;
+  std::unique_ptr<StackObj> ref3rence;
 };
 
 #endif  // INCLUDE_STACKSECOND_HPP_
