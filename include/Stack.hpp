@@ -19,16 +19,17 @@ class Stack
     pointer = std::move(mov);
   }
   void push(const T& value) {
-    auto mov = std::unique_ptr<StackObj>(new StackObj(std::move(pointer), (value)));
+    auto mov = std::unique_ptr<StackObj>(new StackObj(std::move(pointer),
+                                                      (value)));
     pointer = std::move(mov);
   }
   T pop() {
-    if (pointer!= nullptr) {
+    if (pointer != nullptr) {
       auto del = pointer->value;
       pointer = std::move(pointer->last);
       return del;
     }
-    throw std::runtime_error("Stack is empty");
+    throw std::runtime_error("Null error");
   }
   const T& head() const {
     return pointer->value;

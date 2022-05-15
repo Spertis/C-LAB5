@@ -6,7 +6,7 @@ int main() {
   int x = 6;
   Stack<int> mystack;
   mystack.push(x);
-//  mystack.head();
+  std::cout << mystack.head();
 //  mystack.push(0);
 //  std::cout << mystack.head() << " ";//<< mystack.pop();
 
